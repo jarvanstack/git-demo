@@ -4,4 +4,5 @@ import "fmt"
 
 func main() {
 	fmt.Printf("%s\n", "call main function")
+	fmt.Printf("%s\n", "Hello World")
 }
