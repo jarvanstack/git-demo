@@ -1,4 +1,7 @@
 # git rebase -i
+![](https://markdown-1304103443.cos.ap-guangzhou.myqcloud.com/2022-02-042022-02-045f5a79a5d2bde029d4de9d98026ef3f2.png)
+
+## 合并多个commit并重新修改message
 
 我们需要将多个 commit 整合为一个再推送到 GitHub
 
@@ -16,7 +19,7 @@ d38622c doc(readme): 新增a1,a2,a3并删除v*
 * doc(readme): 新增b2
 * doc(readme): 新增b1
 
-3 个 commit 合并为 1 个并重新命名为 
+3 个 commit 合并为 1 个并重新修改message为 
 
 * doc(readme): 新增b1,b2,b3 
 
@@ -81,3 +84,33 @@ $ git log --oneline
 3fe77d9 (HEAD -> master) doc(readme): 新增b1,b2,b3
 d38622c doc(readme): 新增a1,a2,a3并删除v*
 ```
+
+## 修改提交的message
+
+
+
+
+
+```bash
+$ git log --oneline
+3fe77d9 (HEAD -> master) doc(readme): 新增b1,b2,b3
+d38622c doc(readme): 新增a1,a2,a3并删除v*
+346e749 doc(readme): 新增v1,v2,v3
+```
+
+rebase 不会包括最后一个 commit ,模式是 [)
+
+```
+git rebase -i 346e749
+```
+修改指定的 commit pick 为 r
+
+```bash
+r 440a6b4 doc(readme): 新增a1,a2,a3并删除v*
+pick f6b11ff doc(readme): 新增b1,b2,b3
+pick f08adb3 doc(rebase): 新增 rebase.md 的教程
+```
+
+然后 :wq 
+
+最后会自动跳转到修改指定 commit message 的界面, 修改即可.
